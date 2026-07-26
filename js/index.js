@@ -131,7 +131,7 @@ var bodyUnlock = (delay = 500) => {
 			document.documentElement.removeAttribute("data-fls-scrolllock");
 		}, delay);
 		bodyLockStatus = false;
-		setTimeout(function() {
+		setTimeout(function () {
 			bodyLockStatus = true;
 		}, delay);
 	}
@@ -146,7 +146,7 @@ var bodyLock = (delay = 500) => {
 		document.body.style.paddingRight = lockPaddingValue;
 		document.documentElement.setAttribute("data-fls-scrolllock", "");
 		bodyLockStatus = false;
-		setTimeout(function() {
+		setTimeout(function () {
 			bodyLockStatus = true;
 		}, delay);
 	}
@@ -193,7 +193,7 @@ function tabs() {
 		});
 		let mdQueriesArray = dataMediaQueries(tabs, "flsTabs");
 		if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem) => {
-			mdQueriesItem.matchMedia.addEventListener("change", function() {
+			mdQueriesItem.matchMedia.addEventListener("change", function () {
 				setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 			});
 			setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
@@ -291,16 +291,16 @@ tabButtons.forEach((button, index) => {
 });
 var icons = [
 	{
-		active: "/assets/img/main/02-our-history/heart-orange.svg",
-		inactive: "/assets/img/main/02-our-history/heart.svg"
+		active: "./assets/img/main/02-our-history/heart-orange.svg",
+		inactive: "./assets/img/main/02-our-history/heart.svg"
 	},
 	{
-		active: "/assets/img/main/02-our-history/no-flash-orange.svg",
-		inactive: "/assets/img/main/02-our-history/no-flash.svg"
+		active: "./assets/img/main/02-our-history/no-flash-orange.svg",
+		inactive: "./assets/img/main/02-our-history/no-flash.svg"
 	},
 	{
-		active: "/assets/img/main/02-our-history/flash-orange.svg",
-		inactive: "/assets/img/main/02-our-history/flash.svg"
+		active: "./assets/img/main/02-our-history/flash-orange.svg",
+		inactive: "./assets/img/main/02-our-history/flash.svg"
 	}
 ];
 var buttons = document.querySelectorAll(".tabs-history__title");
@@ -324,13 +324,13 @@ function spollers() {
 	const spollersArray = document.querySelectorAll("[data-fls-spollers]");
 	if (spollersArray.length > 0) {
 		document.addEventListener("click", setSpollerAction);
-		const spollersRegular = Array.from(spollersArray).filter(function(item, index, self) {
+		const spollersRegular = Array.from(spollersArray).filter(function (item, index, self) {
 			return !item.dataset.flsSpollers.split(",")[0];
 		});
 		if (spollersRegular.length) initSpollers(spollersRegular);
 		let mdQueriesArray = dataMediaQueries(spollersArray, "flsSpollers");
 		if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem) => {
-			mdQueriesItem.matchMedia.addEventListener("change", function() {
+			mdQueriesItem.matchMedia.addEventListener("change", function () {
 				initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 			});
 			initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
@@ -458,10 +458,10 @@ function extend$1(target = {}, src = {}) {
 }
 var ssrDocument = {
 	body: {},
-	addEventListener() {},
-	removeEventListener() {},
+	addEventListener() { },
+	removeEventListener() { },
 	activeElement: {
-		blur() {},
+		blur() { },
 		nodeName: ""
 	},
 	querySelector() {
@@ -474,14 +474,14 @@ var ssrDocument = {
 		return null;
 	},
 	createEvent() {
-		return { initEvent() {} };
+		return { initEvent() { } };
 	},
 	createElement() {
 		return {
 			children: [],
 			childNodes: [],
 			style: {},
-			setAttribute() {},
+			setAttribute() { },
 			getElementsByTagName() {
 				return [];
 			}
@@ -523,26 +523,28 @@ var ssrWindow = {
 		search: ""
 	},
 	history: {
-		replaceState() {},
-		pushState() {},
-		go() {},
-		back() {}
+		replaceState() { },
+		pushState() { },
+		go() { },
+		back() { }
 	},
 	CustomEvent: function CustomEvent() {
 		return this;
 	},
-	addEventListener() {},
-	removeEventListener() {},
+	addEventListener() { },
+	removeEventListener() { },
 	getComputedStyle() {
-		return { getPropertyValue() {
-			return "";
-		} };
+		return {
+			getPropertyValue() {
+				return "";
+			}
+		};
 	},
-	Image() {},
-	Date() {},
+	Image() { },
+	Date() { },
 	screen: {},
-	setTimeout() {},
-	clearTimeout() {},
+	setTimeout() { },
+	clearTimeout() { },
 	matchMedia() {
 		return {};
 	},
@@ -573,10 +575,10 @@ function deleteProps(obj) {
 	Object.keys(object).forEach((key) => {
 		try {
 			object[key] = null;
-		} catch (e) {}
+		} catch (e) { }
 		try {
 			delete object[key];
-		} catch (e) {}
+		} catch (e) { }
 	});
 }
 function nextTick(callback, delay = 0) {
@@ -707,7 +709,7 @@ function showWarning(text) {
 	try {
 		console.warn(text);
 		return;
-	} catch (err) {}
+	} catch (err) { }
 }
 function createElement(tag, classes = []) {
 	const el = document.createElement(tag);
@@ -3097,7 +3099,7 @@ var Swiper = class Swiper {
 		let el;
 		let params;
 		if (args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === "Object") params = args[0];
-		else [el, params] = args;
+		else[el, params] = args;
 		if (!params) params = {};
 		params = extend({}, params);
 		if (el && !params.el) params.el = el;
@@ -3522,35 +3524,37 @@ function classesToSelector(classes = "") {
 //#region node_modules/swiper/modules/pagination.mjs
 function Pagination({ swiper, extendParams, on, emit }) {
 	const pfx = "swiper-pagination";
-	extendParams({ pagination: {
-		el: null,
-		bulletElement: "span",
-		clickable: false,
-		hideOnClick: false,
-		renderBullet: null,
-		renderProgressbar: null,
-		renderFraction: null,
-		renderCustom: null,
-		progressbarOpposite: false,
-		type: "bullets",
-		dynamicBullets: false,
-		dynamicMainBullets: 1,
-		formatFractionCurrent: (number) => number,
-		formatFractionTotal: (number) => number,
-		bulletClass: `${pfx}-bullet`,
-		bulletActiveClass: `${pfx}-bullet-active`,
-		modifierClass: `${pfx}-`,
-		currentClass: `${pfx}-current`,
-		totalClass: `${pfx}-total`,
-		hiddenClass: `${pfx}-hidden`,
-		progressbarFillClass: `${pfx}-progressbar-fill`,
-		progressbarOppositeClass: `${pfx}-progressbar-opposite`,
-		clickableClass: `${pfx}-clickable`,
-		lockClass: `${pfx}-lock`,
-		horizontalClass: `${pfx}-horizontal`,
-		verticalClass: `${pfx}-vertical`,
-		paginationDisabledClass: `${pfx}-disabled`
-	} });
+	extendParams({
+		pagination: {
+			el: null,
+			bulletElement: "span",
+			clickable: false,
+			hideOnClick: false,
+			renderBullet: null,
+			renderProgressbar: null,
+			renderFraction: null,
+			renderCustom: null,
+			progressbarOpposite: false,
+			type: "bullets",
+			dynamicBullets: false,
+			dynamicMainBullets: 1,
+			formatFractionCurrent: (number) => number,
+			formatFractionTotal: (number) => number,
+			bulletClass: `${pfx}-bullet`,
+			bulletActiveClass: `${pfx}-bullet-active`,
+			modifierClass: `${pfx}-`,
+			currentClass: `${pfx}-current`,
+			totalClass: `${pfx}-total`,
+			hiddenClass: `${pfx}-hidden`,
+			progressbarFillClass: `${pfx}-progressbar-fill`,
+			progressbarOppositeClass: `${pfx}-progressbar-opposite`,
+			clickableClass: `${pfx}-clickable`,
+			lockClass: `${pfx}-lock`,
+			horizontalClass: `${pfx}-horizontal`,
+			verticalClass: `${pfx}-vertical`,
+			paginationDisabledClass: `${pfx}-disabled`
+		}
+	});
 	swiper.pagination = {
 		el: null,
 		bullets: []
@@ -3868,15 +3872,17 @@ function Autoplay({ swiper, extendParams, on, emit, params }) {
 		paused: false,
 		timeLeft: 0
 	};
-	extendParams({ autoplay: {
-		enabled: false,
-		delay: 3e3,
-		waitForTransition: true,
-		disableOnInteraction: false,
-		stopOnLastSlide: false,
-		reverseDirection: false,
-		pauseOnMouseEnter: false
-	} });
+	extendParams({
+		autoplay: {
+			enabled: false,
+			delay: 3e3,
+			waitForTransition: true,
+			disableOnInteraction: false,
+			stopOnLastSlide: false,
+			reverseDirection: false,
+			pauseOnMouseEnter: false
+		}
+	});
 	let timeout;
 	let raf;
 	let autoplayDelayTotal = params && params.autoplay ? params.autoplay.delay : 3e3;
@@ -4175,7 +4181,7 @@ document.querySelector("[data-fls-slider]") && window.addEventListener("load", i
 //#endregion
 //#region src/components/layout/menu/menu.js
 function menuInit() {
-	document.addEventListener("click", function(e) {
+	document.addEventListener("click", function (e) {
 		if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
 			bodyLockToggle();
 			document.documentElement.toggleAttribute("data-fls-menu-open");
@@ -4192,7 +4198,7 @@ function headerScroll() {
 	const startPoint = header.dataset.flsHeaderScroll ? header.dataset.flsHeaderScroll : 1;
 	let scrollDirection = 0;
 	let timer;
-	document.addEventListener("scroll", function(e) {
+	document.addEventListener("scroll", function (e) {
 		const scrollTop = window.scrollY;
 		clearTimeout(timer);
 		if (scrollTop >= startPoint) {
@@ -4232,7 +4238,7 @@ var DynamicAdapt = class {
 			const parentObjectSelector = dataArray[3] ? dataArray[3].trim() : null;
 			const objectSelector = dataArray[0] ? dataArray[0].trim() : null;
 			if (objectSelector) {
-				if (parentObjectSelector) `${parentObjectSelector}${objectSelector}`;
+				if (parentObjectSelector)`${parentObjectSelector}${objectSelector}`;
 				const foundDestination = object.destinationParent.querySelector(objectSelector);
 				if (foundDestination) object.destination = foundDestination;
 			}
@@ -4430,7 +4436,7 @@ var ScrollWatcher = class {
 		this.scrollWatcherConstructor(document.querySelectorAll("[data-fls-watcher]"));
 	}
 	scrollWatcherConstructor(items) {
-		if (items.length) uniqArray(Array.from(items).map(function(item) {
+		if (items.length) uniqArray(Array.from(items).map(function (item) {
 			if (item.dataset.flsWatcher === "navigator" && !item.dataset.flsWatcherThreshold) {
 				let valueOfThreshold;
 				if (item.clientHeight > 2) {
@@ -4447,7 +4453,7 @@ var ScrollWatcher = class {
 				margin: uniqParamArray[1],
 				threshold: uniqParamArray[2]
 			};
-			let groupItems = Array.from(items).filter(function(item) {
+			let groupItems = Array.from(items).filter(function (item) {
 				let watchRoot = item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null;
 				let watchMargin = item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px";
 				let watchThreshold = item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0;
@@ -4460,7 +4466,7 @@ var ScrollWatcher = class {
 	getScrollWatcherConfig(paramsWatch) {
 		let configWatcher = {};
 		if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root);
-		else if (paramsWatch.root !== "null") {}
+		else if (paramsWatch.root !== "null") { }
 		configWatcher.rootMargin = paramsWatch.margin;
 		if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) return;
 		if (paramsWatch.threshold === "prx") {
